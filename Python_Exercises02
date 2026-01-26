@@ -1,0 +1,72 @@
+
+#Answer to the ques no 1
+name = input("Hey buddy, Enter your name:")
+print("Hello, " + name)
+
+
+#Answer to the ques no 2
+radius = float(input("Enter your radius:"))
+pi = 3.14159
+
+Area = pi * radius * radius
+
+print("The area of the circle is" ,Area)
+
+
+
+#Answer to the ques no 3
+
+length = float(input("Enter your length:"))
+width = float(input("Enter your width:"))
+
+Perimeter = 2*(length + width)
+Area = length * width
+
+print("The perimeter of that rectangle is ", Perimeter)
+print("The area of that rectangle is ", Area)
+
+
+
+#Answer to the ques no 4
+
+First_int = float(input("Enter your first number:"))
+Second_int = float(input("Enter your second number:"))
+Third_int = float(input("Enter your third number:"))
+
+sum = First_int+Second_int+Third_int
+product = First_int*Second_int*Third_int
+average = sum/3
+
+print("The sum is", sum)
+print("The product is", product)
+print("The average is", average)
+
+
+
+
+#Answer to the question no 5
+
+'''One talent is 20 pounds.
+One pound is 32 lots.
+One lot is 13,3 grams.'''
+
+talent_input = float(input("Enter your talent:"))
+pound_input = float(input("Enter your pound:"))
+lots_input = float(input("Enter your lots:"))
+
+talent = talent_input*20*32*13.3
+pound = pound_input*32*13.3
+lots = lots_input*13.3
+
+total_grams = talent + pound + lots
+
+kilograms = int(total_grams// 1000)
+remaining_grams = total_grams % 1000
+
+print("The weight in modern units:")
+print("Total weight in grams: ", total_grams)
+print("Total weight is ", kilograms,"kg" ,remaining_grams,"gram" )
+
+'''
+Mam, I am sorry I couldn't solve question 6 with my own knowledge
+'''
