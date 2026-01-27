@@ -1,0 +1,65 @@
+
+
+#Answer to the question no. 01
+#A zander must be 42 centimeters or longer to meet the size limit.
+
+size_limit = 42
+length = float(input("Hey fisher, whats the length of that zander in centimeter: "))
+
+if length >= size_limit:
+    print("The zander meets the length, you can keep it")
+
+else:
+    print("Release the fish back into the lake and the size limit is 42 cm or longer")
+
+#Answer to the question no. 02
+cabin_class = input("Enter the cabin class: ").upper()
+
+if cabin_class == "LUX":
+    print("LUX: upper-deck cabin with a balcony.")
+elif cabin_class == "A":
+    print("A: above the car deck, equipped with a window")
+elif cabin_class == "B":
+    print("B: windowless cabin above the car deck")
+elif cabin_class == "C":
+    print("C: windowless cabin below the car deck.")
+
+else:
+    print("Invalid cabin class.")
+
+
+#Answer to the question no. 03
+
+gender = input("Enter you gender (male of female): ").lower()
+hb_value = float(input("Enter your hemoglobin value: "))
+
+if gender == "female":
+    if hb_value < 117:
+        print("Hemoglobin value is low")
+    elif 117 <= hb_value <= 155:
+        print("Hemoglobin value is normal")
+    else:
+        print("Hemoglobin value is high")
+
+elif gender == "male":
+    if hb_value < 134:
+        print("Hemoglobin value is low")
+    elif 134 <= hb_value <= 167:
+        print("Hemoglobin value is normal")
+    else:
+        print("Hemoglobin value is high")
+
+else:
+    print("Invalid gender.")
+
+#Answer to the question no. 04
+
+year = int(input("Enter a year: "))
+
+if year % 4 ==0:
+    if year % 100 == 0:
+        if year % 400 == 0:
+            print(year,"is a leap year")
+
+else:
+    print(year,"is not a leap year")
