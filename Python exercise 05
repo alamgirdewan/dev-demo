@@ -1,0 +1,56 @@
+#Answer to the Question No-01
+import random
+num_dice = int(input("How many dice would you like to roll? "))
+total_sum = 0
+for i in range(num_dice):
+    roll = random.randint(1, 6)
+    total_sum += roll
+print(f"The sum of the dice rolls is: {total_sum}")
+print()
+
+#Answer to the Question No-02
+numbers = []
+while True:
+    user_input = input("Enter a number (or press Enter to quit): ")
+    if user_input == "":
+        break
+    try:
+        numbers.append(float(user_input))
+    except ValueError:
+        print("Invalid input. Please enter a number or an empty string to quit.")
+
+numbers.sort(reverse=True)
+top_five = numbers[:5]
+print("The five greatest numbers in descending order are:")
+for number in top_five:
+    print(number)
+print()
+
+#Answer to the Question No-03
+num = int(input("Enter an integer: "))
+
+if num <= 1:
+    print(num, "is not a prime number.")
+else:
+    prime = True
+
+    for i in range(2, num):
+        if num % i == 0:
+            prime = False
+            break
+
+    if prime:
+        print(num, "is a prime number.")
+    else:
+        print(num, "is not a prime number.")
+print()
+
+#Answer to the question No-04
+cities = []
+for i in range(5):
+    city_name = input("Enter city name: ")
+    cities.append(city_name)
+print("Five Citylist are(one by one):")
+for city in cities:
+    print(city)
+print()
