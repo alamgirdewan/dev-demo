@@ -1,0 +1,61 @@
+#Answer to the question No 01
+seasons = ("Winter","Spring","Summer","Autumn")
+month= int(input("Enter the number of the month(1-12):"))
+if month < 1 or month > 12:
+    print("This month does not exist")
+else:
+    if month == 12 or month == 1 or month == 2:
+        print("season:",seasons[0])
+    elif month == 3 or month == 4 or month == 5:
+        print("season:",seasons[1])
+    elif month == 6 or month == 7 or month == 8:
+        print("season:",seasons[2])
+    else:
+        print("season:",seasons[3])
+print()
+
+#Answer to the question No 02
+names = set()
+while True:
+    name = input("Enter a name(or press enter to exit):")
+    if name == "":
+        break
+    if name in names:
+        print("Existing name")
+    else:
+        print("New name")
+        names.add(name)
+print("\nNames entered:")
+for name in names:
+    print(name)
+print()
+
+#Answer to the question No 03
+airports = {}
+while True:
+    print("\n Airport Database ")
+    print("1: Enter a new airport.")
+    print("2: Fetch information of an existing airport.")
+    print("3: Quit program!")
+
+    choice = input("Choose an option (1, 2, or 3): ")
+
+    if choice == "1":
+        icao = input("Enter the ICAO code: ").upper()
+        name = input("Enter the airport name: ")
+        airports[icao] = name
+        print(f"Airport {icao} added successfully.")
+
+    elif choice == "2":
+        icao = input("Enter the ICAO code to fetch: ").upper()
+        if icao in airports:
+            print(f"The name of the airport is: {airports[icao]}")
+        else:
+            print("Airport not found in the database.")
+
+    elif choice == "3":
+        print("Program terminated.Goodbye!")
+        break
+
+    else:
+        print("Invalid choice, please enter a valid keyword.")
