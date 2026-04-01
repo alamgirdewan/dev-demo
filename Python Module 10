@@ -1,0 +1,142 @@
+#Solution-01
+
+class Elevator:
+    def __init__(self, lowest, highest):
+        self.lowest = lowest
+        self.highest = highest
+        self.current = lowest
+
+    def floor_up(self):
+        if self.current < self.highest:
+            self.current += 1
+        print("Floor:", self.current)
+
+    def floor_down(self):
+        if self.current > self.lowest:
+            self.current -= 1
+        print("Floor:", self.current)
+
+    def go_to_floor(self, destination):
+        if destination < self.lowest or destination > self.highest:
+            print("Floor out of range!")
+            return
+        if destination > self.current:
+            while self.current != destination:
+                self.floor_up()
+        else:
+            while self.current != destination:
+                self.floor_down()
+
+
+h = Elevator(0, 10)
+print("Going to floor 5:")
+h.go_to_floor(5)
+print("Back to bottom:")
+h.go_to_floor(0)
+print()
+
+
+#Solution-02
+
+class Building:
+    def __init__(self, lowest, highest, elevator_count):
+        self.lowest = lowest
+        self.highest = highest
+        self.elevators = []
+        for _ in range(elevator_count):
+            self.elevators.append(Elevator(lowest, highest))
+
+    def run_elevator(self, index, destination):
+        print(f"Elevator {index} heading to floor {destination}:")
+        self.elevators[index].go_to_floor(destination)
+
+b = Building(0, 12, 3)
+b.run_elevator(0, 7)
+b.run_elevator(1, 4)
+print()
+
+
+#Solution-03
+
+class Building:
+    def __init__(self, lowest, highest, elevator_count):
+        self.lowest = lowest
+        self.highest = highest
+        self.elevators = []
+        for _ in range(elevator_count):
+            self.elevators.append(Elevator(lowest, highest))
+
+    def run_elevator(self, index, destination):
+        print(f"Elevator {index} heading to floor {destination}:")
+        self.elevators[index].go_to_floor(destination)
+
+    def fire_alarm(self):
+        print("\nFIRE ALARM! All elevators returning to ground floor.")
+        num = 1
+        for e in self.elevators:
+            print(f"Elevator {num}:")
+            e.go_to_floor(self.lowest)
+            num += 1
+
+city_hall = Building(0, 20, 2)
+city_hall.run_elevator(0, 15)
+city_hall.run_elevator(1, 8)
+city_hall.fire_alarm()
+print()
+
+
+#Solution-04
+
+import random
+
+class Car:
+    def __init__(self, reg_number, max_speed):
+        self.reg_number = reg_number
+        self.max_speed = max_speed
+        self.current_speed = 0
+        self.km_driven = 0
+
+    def drive(self, hours=1):
+        self.km_driven += self.current_speed * hours
+
+
+class Race:
+    def __init__(self, race_name, total_km, car_list):
+        self.race_name = race_name
+        self.total_km = total_km
+        self.car_list = car_list
+
+    def hour_passes(self):
+        for car in self.car_list:
+            adjustment = random.randint(-10, 15)
+            car.current_speed = max(0, min(car.max_speed, car.current_speed + adjustment))
+            car.drive()
+
+    def print_status(self):
+        header = f"{'Car':<10}  {'Max speed':>7}  {'Car speed':>7}  {'Distance':>10}"
+        print(f"\n[ {self.race_name} ]")
+        print(header)
+
+        for car in self.car_list:
+            print(f"{car.reg_number:<10}  {car.max_speed:>7}  {car.current_speed:>7}  {car.km_driven:>9.1f}")
+
+    def race_finished(self):
+        for car in self.car_list:
+            if car.km_driven >= self.total_km:
+                return True
+        return False
+
+
+car_list = [Car(f"CAR-{i+1}", random.randint(100, 200)) for i in range(10)]
+derby = Race("Grand Demolition Derby", 8000, car_list)
+
+elapsed = 0
+while not derby.race_finished():
+    derby.hour_passes()
+    elapsed += 1
+    if elapsed % 10 == 0:
+        print(f"After {elapsed} hours:")
+        derby.print_status()
+
+print(f"\nRace over! Total time: {elapsed} hours")
+derby.print_status()
