@@ -71,7 +71,7 @@ class Building:
         self.elevators[index].go_to_floor(destination)
 
     def fire_alarm(self):
-        print("\nFIRE ALARM! All elevators returning to ground floor.")
+        print("\nFire Alarm! All elevators returning to ground floor.")
         num = 1
         for e in self.elevators:
             print(f"Elevator {num}:")
