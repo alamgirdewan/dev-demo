@@ -1,0 +1,56 @@
+# Solution-01
+import requests
+
+def get_chuck_norris_joke():
+    url = "https://api.chucknorris.io/jokes/random"
+
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        print(data["value"])
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching joke: {e}")
+
+
+if __name__ == "__main__":
+    get_chuck_norris_joke()
+
+
+# Solution-02
+
+import requests
+
+def get_weather():
+    api_key = "ed6eefa4933711882766837de845f527"
+    municipality = input("Input the name of municipality: ")
+
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={municipality}&appid={api_key}"
+
+    try:
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            data = response.json()
+
+            description = data['weather'][0]['description']
+
+            temp_kelvin = data['main']['temp']
+            temp_celsius = temp_kelvin - 273.15
+
+            print(f"\nWeather in {municipality.capitalize()}:")
+            print(f"Condition: {description}")
+            print(f"Temperature: {temp_celsius:.1f}°C")
+
+        elif response.status_code == 404:
+            print("Municipality not found. Please check the spelling.")
+        else:
+            print("An error occurred while fetching data.")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Connection error: {e}")
+
+
+if __name__ == "__main__":
+    get_weather()
